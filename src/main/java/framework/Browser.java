@@ -14,7 +14,6 @@ import static framework.BaseTest.conf;
 
 public class Browser {
     private static WebDriverWait browserWait;
-    //private static Wait<WebDriver> wait;
     private static WebDriver browser;
 
     public static synchronized WebDriver getWebDriverInstance() {
@@ -36,7 +35,7 @@ public class Browser {
             browser.manage().timeouts().implicitlyWait(conf.getIntProperty("timeouts"), TimeUnit.SECONDS);
             browser.manage().window().maximize();
             browserWait = new WebDriverWait(browser, conf.getIntProperty("default.time.out"));
-            //wait = new FluentWait<>(browser).withTimeout(Duration.ofSeconds(conf.getIntProperty("fluent.duration"))).pollingEvery(Duration.ofSeconds(conf.getIntProperty("fluent.duration.period"))).ignoring(NoSuchElementException.class);
+
         }
         return browser;
     }
@@ -55,16 +54,7 @@ public class Browser {
         }
         browser = null;
         browserWait = null;
-       // wait = null;
     }
-
-   /* static Wait<WebDriver> getWait() {
-        if (wait == null || null == browser) {
-            throw new IllegalStateException();
-        } else {
-            return wait;
-        }
-    }*/
 
     public static void getPage(String url) {
         browser.get(url);

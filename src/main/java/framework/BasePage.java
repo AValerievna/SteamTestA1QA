@@ -1,18 +1,21 @@
 package framework;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-import java.util.List;
 
 public class BasePage {
-    //protected WebDriver wd = Browser.getWebDriverInstance();
+    protected BaseElement ident;
+    protected final static String identPattern="//div[@class='%s']";
 
-    public BasePage(By by) {
-        Browser.getWebDriverWaitInstance().until(ExpectedConditions.presenceOfElementLocated(by));
-        Assert.assertTrue(elementExists(by), "Needed page did not load");
+    public BasePage(String pageIdent) {
+        ident = new BaseElement(BaseElement.getLocatorWithPattern(identPattern, pageIdent));
+        ident.waitElement(ExpectedConditions.presenceOfElementLocated(ident.getLocator()));
+        isNeededPage();
+    }
+
+    protected void isNeededPage() {
+        Assert.assertTrue(this.ident.elementExists(), "Needed page did not load");
     }
 }

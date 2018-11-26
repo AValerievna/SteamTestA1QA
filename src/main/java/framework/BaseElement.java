@@ -7,51 +7,53 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
+
 public class BaseElement {
-    protected boolean elementExists(By by) {
-        waitElement(ExpectedConditions.presenceOfElementLocated(by));
+    private By locator;
 
-        // REALLY?
-        return (Browser.getWebDriverInstance().findElements(by).size() != 0);
+    public By getLocator() {
+        return locator;
     }
 
-    protected WebElement getElement(By by) {
-        waitElement(ExpectedConditions.presenceOfElementLocated(by));
-
-        // REALLY?
-        return (Browser.getWebDriverInstance().findElement(by));
+    public static By getLocatorWithPattern(String pattern, String elemIdent) {
+        return By.xpath(String.format(pattern, elemIdent));
     }
 
-    protected List<WebElement> getElements(By by) {
-        waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
-
-        // REALLY?
-        return (Browser.getWebDriverInstance().findElements(by));
+    public BaseElement(By locator) {
+        this.locator = locator;
     }
 
-    protected void clickElement(By by) {
-        waitElement(ExpectedConditions.elementToBeClickable(by));
-
-        // REALLY?
-        Browser.getWebDriverInstance().findElement(by).click();
+    public boolean elementExists() {
+        waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
+        return (Browser.getWebDriverInstance().findElements(this.locator).size() != 0);
     }
 
-    //HOW???
-    protected <V> void waitElement(java.util.function.Function<? super WebDriver,V> isTrue) {
+    public  WebElement getElement() {
+        waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
+        return (Browser.getWebDriverInstance().findElement(this.locator));
+    }
+
+    protected  List<WebElement> getElements() {
+        waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(this.locator));
+        return (Browser.getWebDriverInstance().findElements(this.locator));
+    }
+
+    public void clickElement() {
+        waitElement(ExpectedConditions.elementToBeClickable(this.locator));
+        Browser.getWebDriverInstance().findElement(this.locator).click();
+    }
+
+    protected static <V> void waitElement(java.util.function.Function<? super WebDriver, V> isTrue) {
         Browser.getWebDriverWaitInstance().until(isTrue);
     }
 
-    protected String getTextElement(By by) {
-        waitElement(ExpectedConditions.presenceOfElementLocated(by));
-
-        // REALLY?
-        return Browser.getWebDriverInstance().findElement(by).getText();
+    protected String getTextElement() {
+        waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
+        return Browser.getWebDriverInstance().findElement(this.locator).getText();
     }
 
-    protected String getAttrElement(By by, String attrName) {
-        waitElement(ExpectedConditions.presenceOfElementLocated(by));
-
-        // REALLY?
-        return Browser.getWebDriverInstance().findElement(by).getAttribute(attrName);
+    protected String getAttrElement(String attrName) {
+        waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
+        return Browser.getWebDriverInstance().findElement(this.locator).getAttribute(attrName);
     }
 }
