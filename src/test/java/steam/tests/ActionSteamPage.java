@@ -14,17 +14,13 @@ public class ActionSteamPage extends BaseForm {
     List<String> discGames;
 
     public ActionSteamPage() {
-        super(conf.getProperty("action.page.class.ident"));
+        super(conf.getProperty("responsive.page.class.ident"));
     }
 
 
     public void goToTopSellers() {
-        specialsLabel = new Label(CommonFunctions.getLocatorWithPattern(lblPattern,conf.getProperty("specials.label")));
+        specialsLabel = new Label(Utils.getLocatorWithPattern(lblPattern,conf.getProperty("specials.label")));
         specialsLabel.clickElement();
     }
 
-    public void getDiscountGamesDiscountText() {
-        specialsLabel = new Label(discGame);
-        discGames = specialsLabel.;
-    }
 }

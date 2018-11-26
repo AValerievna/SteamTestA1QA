@@ -11,18 +11,6 @@ import java.util.*;
 public class BaseElement {
     private By locator;
 
-    public String[] getAllElementsText() {
-        Browser.waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(this.locator));
-        List<WebElement> webElems = Browser.getWebDriverInstance().findElements(this.locator);
-        Map<Integer, String> discounts = new TreeMap<Integer, String>();
-        for(WebElement webElem : webElems) {
-
-            discounts.add(Integer.parseInt(webElems.get(i).getText().replaceAll("\\D+","")),webElems.get(i).getText());
-        }
-
-        return discounts;
-    }
-
     public By getLocator() {
         return locator;
     }

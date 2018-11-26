@@ -3,8 +3,7 @@ package steam.tests;
 import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
-import steam.forms.BaseSteamPage;
-import steam.forms.SteamMenu;
+import steam.forms.HomeSteamPage;
 
 
 public class TestScenario extends BaseTest {
@@ -13,10 +12,10 @@ public class TestScenario extends BaseTest {
     public void testScenario() throws Exception {
         log.info("Go to steam");
         Browser.getPage(conf.getProperty("base.url"));
-        BaseSteamPage objBaseSteamPage = new BaseSteamPage();
+        HomeSteamPage objHomeSteamPage = new HomeSteamPage();
 
         log.info("Go to Actions");
-        objBaseSteamPage.goToActionSteamPage();
+        objHomeSteamPage.goToActionSteamPage();
         ActionSteamPage objActPage = new ActionSteamPage();
 
         log.info("Go to TopSellers tab");

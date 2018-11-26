@@ -1,21 +1,22 @@
 package steam.forms;
 
 import framework.BaseForm;
+import framework.enums.Tabs;
 
 import static framework.BaseTest.conf;
 
-public class BaseSteamPage extends BaseForm {
+public class HomeSteamPage extends BaseForm {
     private SteamMenu stMenu = new SteamMenu();
     //private static final By = baseSteamPageIdent
 /*    public void setLanguage() {
         Label menu = Label(By.xpath(String.format(Locale.ENGLISH)))
     }*/
 
-    public BaseSteamPage() {
-        super(conf.getProperty("base.page.class.ident"));
+    public HomeSteamPage() {
+        super(conf.getProperty("home.page.class.ident"));
     }
 
     public void goToActionSteamPage() {
-        stMenu.navigateMenu(conf.getProperty("tab.id"),conf.getProperty("section.name"));
+        stMenu.navigateMenu(Tabs.GENRE.toString(),conf.getProperty("section.name"));
     }
 }
