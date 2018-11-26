@@ -16,11 +16,12 @@ public class TestScenario extends BaseTest {
         BaseSteamPage objBaseSteamPage = new BaseSteamPage();
 
         log.info("Go to Actions");
-        SteamMenu stMenu = new SteamMenu();
-        stMenu.navigateMenu(conf.getProperty("tab.id"),conf.getProperty("section.name"));
-        /*objHomePage.clickLogin();
-        UtilityMethods.redirectionToLoginPage(conf.getProperty("url.login.page.fragment"));
-        LoginPage objLoginPage = new LoginPage();*/
+        objBaseSteamPage.goToActionSteamPage();
+        ActionSteamPage objActPage = new ActionSteamPage();
+
+        log.info("Go to TopSellers tab");
+        objActPage.goToTopSellers();
+
     }
 
 }

@@ -63,4 +63,8 @@ public class Browser {
     public static void refreshBr() {
         browser.navigate().refresh();
     }
+
+    protected static <V> void waitElement(java.util.function.Function<? super WebDriver, V> isTrue) {
+        getWebDriverWaitInstance().until(isTrue);
+    }
 }

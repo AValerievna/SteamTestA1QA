@@ -2,6 +2,7 @@ package steam.forms;
 
 import framework.BaseElement;
 import framework.Browser;
+import framework.CommonFunctions;
 import org.openqa.selenium.interactions.Actions;
 
 public class SteamMenu {
@@ -11,15 +12,12 @@ public class SteamMenu {
 
     public void navigateMenu(String tab, String section) {
         Actions builder = new Actions(Browser.getWebDriverInstance());
-        BaseElement tabEl = new BaseElement(BaseElement.getLocatorWithPattern(tabPattern, tab));
+        BaseElement tabEl = new BaseElement(CommonFunctions.getLocatorWithPattern(tabPattern, tab));
         builder.moveToElement(tabEl.getElement())
-                .moveToElement(new BaseElement(BaseElement.getLocatorWithPattern(sectionPattern, section))
+                .moveToElement(new BaseElement(CommonFunctions.getLocatorWithPattern(sectionPattern, section))
                         .getElement())
                 .click()
                 .build()
                 .perform();
-        //BaseElement secEl = new BaseElement(BaseElement.getLocatorWithPattern(sectionPattern, section));
-        //builder.click(secEl.getElement());
-        //secEl.clickElement();
     }
 }
