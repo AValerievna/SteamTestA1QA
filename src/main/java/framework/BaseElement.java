@@ -55,11 +55,11 @@ public class BaseElement {
         }
     }
 
-    protected String getTextElement() {
+    public String getElementText() {
         return getElement().getText();
     }
 
-    protected String getAttrElement(String attrName) {
+    protected String getElementAttr(String attrName) {
         return getElement().getAttribute(attrName);
     }
 }

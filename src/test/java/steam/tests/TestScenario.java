@@ -4,6 +4,7 @@ import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
 import steam.forms.HomeSteamPage;
+import steam.forms.SpecialsPage;
 
 
 public class TestScenario extends BaseTest {
@@ -18,8 +19,13 @@ public class TestScenario extends BaseTest {
         objHomeSteamPage.goToActionSteamPage();
         ActionSteamPage objActPage = new ActionSteamPage();
 
-        log.info("Go to TopSellers tab");
-        objActPage.goToTopSellers();
+        log.info("Go to Specials");
+        objActPage.goToSpecials();
+        SpecialsPage objSpecPage = new SpecialsPage();
+
+        log.info("Go to cheepest game");
+        objSpecPage.goToCheepest();
+
 
     }
 

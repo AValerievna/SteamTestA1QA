@@ -13,9 +13,23 @@ public class DiscountGame {
     By labelLoc=By.xpath("/.");
     By discLoc=By.xpath("//div[contains(@class,'search_discount')]/span");
 
+    public Label getGame() {
+        return game;
+    }
+
+    public Span getDiscountSpan() {
+        return discountSpan;
+    }
+    public int getDiscount() {
+        return Integer.parseInt(discountSpan.getElementText().replaceAll("\\D+",""));
+    }
+
+
+
     public DiscountGame(WebElement el) {
         this.game= new Label(el, labelLoc);
         this.name=new Span(el, nameLoc);
         this.discountSpan=new Span(el, discLoc);
     }
+
 }

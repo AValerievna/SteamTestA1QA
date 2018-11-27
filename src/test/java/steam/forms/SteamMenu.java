@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class SteamMenu {
 
-    private final static String tabPattern = "//div[@id='%s']";
+    private final static String tabPattern = "//div[@id='%s_tab']";
     private final static String sectionPattern = "//div[@id='genre_flyout']//a[@class='popup_menu_item'][contains(text(),'%s')]";
 
     public void navigateMenu(String tab, String section) {

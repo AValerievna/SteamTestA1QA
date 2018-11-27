@@ -18,7 +18,7 @@ public class ActionSteamPage extends BasePage {
     }
 
 
-    public void goToTopSellers() {
+    public void goToSpecials() {
         specialsLabel = new Label(Utils.getLocatorWithPattern(lblPattern,conf.getProperty("specials.label")));
         specialsLabel.clickElement();
     }
