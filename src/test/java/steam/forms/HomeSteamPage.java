@@ -1,11 +1,11 @@
 package steam.forms;
 
-import framework.BaseForm;
+import framework.BasePage;
 import framework.enums.Tabs;
 
 import static framework.BaseTest.conf;
 
-public class HomeSteamPage extends BaseForm {
+public class HomeSteamPage extends BasePage {
     private SteamMenu stMenu = new SteamMenu();
     //private static final By = baseSteamPageIdent
 /*    public void setLanguage() {

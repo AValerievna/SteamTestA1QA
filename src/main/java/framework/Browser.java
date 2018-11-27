@@ -1,12 +1,16 @@
 package framework;
 
 
+import java.time.Duration;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import framework.enums.BrowserTypes;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static framework.BaseTest.conf;
@@ -66,5 +70,19 @@ public class Browser {
 
     protected static <V> void waitElement(java.util.function.Function<? super WebDriver, V> isTrue) {
         getWebDriverWaitInstance().until(isTrue);
+    }
+
+    public static <T> Wait<T> getFluentWait(T t) {
+        if (null == browser) {
+            throw new IllegalStateException();
+        }
+        return new FluentWait<>(t)
+                .ignoring(NoSuchElementException.class)
+                .pollingEvery(Duration.ofMillis(conf.getIntProperty("duration")))
+                .withTimeout(Duration.ofSeconds(conf.getIntProperty("duration.per")));
+    }
+
+    public static Wait<WebDriver> getFluentWait() {
+        return getFluentWait(browser);
     }
 }

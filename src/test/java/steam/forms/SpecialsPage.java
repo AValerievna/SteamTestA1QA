@@ -3,7 +3,6 @@ package steam.forms;
 import framework.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.TreeMap;
 
 import static framework.BaseTest.conf;
 
-public class SpecialsPage extends BaseForm {
+public class SpecialsPage extends BasePage {
     List<DiscountGame> games = new ArrayList<>();
     By discGameLocator = By.xpath("//a[contains(@class, 'search_result_row')]");
 
@@ -20,13 +19,12 @@ public class SpecialsPage extends BaseForm {
         super(conf.getProperty("responsive.page.class.ident"));
     }
 
-    public void chooseCheepest() {
+    public void getDiscountGames() {
         List<WebElement> webElems =new BaseElements(discGameLocator).getElements();
         for(WebElement elem : webElems) {
             games.add(new DiscountGame(elem));
             //span[contains(text(),'MONSTER HUNTER: WORLD')]
         }
-
     }
     public String[] getAllElementsText() {
 

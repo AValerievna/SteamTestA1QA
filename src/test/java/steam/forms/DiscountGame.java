@@ -10,13 +10,12 @@ public class DiscountGame {
     private Span name;
     private Span discountSpan;
     By nameLoc=By.xpath("//div/span[@class='title']");
-    By labelLoc=By.xpath("//div[contains(@class,'search_discount')]");
+    By labelLoc=By.xpath("/.");
     By discLoc=By.xpath("//div[contains(@class,'search_discount')]/span");
 
     public DiscountGame(WebElement el) {
-        this.game=;
-        this.name=;
-        this.discountSpan=;
-
+        this.game= new Label(el, labelLoc);
+        this.name=new Span(el, nameLoc);
+        this.discountSpan=new Span(el, discLoc);
     }
 }

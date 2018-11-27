@@ -7,7 +7,7 @@ import java.util.List;
 
 import static framework.BaseTest.conf;
 
-public class ActionSteamPage extends BaseForm {
+public class ActionSteamPage extends BasePage {
     private final static String lblPattern = "//div[@class='%s']//a";
     By discGame = By.xpath("//div[@class='discount_block tab_item_discount'/..");
     Label specialsLabel;

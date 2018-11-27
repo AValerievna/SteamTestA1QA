@@ -18,6 +18,7 @@ public class BaseElements {
 
     public List<WebElement> getElements() {
         Browser.waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(this.locator));
+        List<WebElement> webEls = Browser.getWebDriverInstance().findElements(this.locator);
         return Browser.getWebDriverInstance().findElements(this.locator);
     }
 }
