@@ -11,14 +11,22 @@ import java.util.TreeMap;
 public class BaseElements {
 
     private By locator;
+    private WebElement baseElement;
 
     public BaseElements(By locator) {
         this.locator = locator;
     }
+    public BaseElements(WebElement el, By locator) {
+        this(locator);
+        this.baseElement = el;
+    }
 
     public List<WebElement> getElements() {
-        Browser.waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(this.locator));
-        List<WebElement> webEls = Browser.getWebDriverInstance().findElements(this.locator);
-        return Browser.getWebDriverInstance().findElements(this.locator);
+        if (baseElement == null) {
+            Browser.waitElement(ExpectedConditions.presenceOfAllElementsLocatedBy(this.locator));
+            return Browser.getWebDriverInstance().findElements(this.locator);
+        }
+        return Browser.getFluentWait(baseElement)
+                .until(webElement -> webElement.findElements(locator));
     }
 }

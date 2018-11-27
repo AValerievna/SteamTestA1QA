@@ -15,9 +15,11 @@ public class SpecialsPage extends BasePage {
     List<DiscountGame> games = new ArrayList<>();
     DiscountGame neededGame;
     By discGameLocator = By.xpath("//a[contains(@class, 'search_result_row')]");
+    private final static String respPageIdent="responsive_page_content_overlay";
+
 
     public SpecialsPage() {
-        super(conf.getProperty("responsive.page.class.ident"));
+        super(respPageIdent);
     }
 
     public void getDiscountGames() {

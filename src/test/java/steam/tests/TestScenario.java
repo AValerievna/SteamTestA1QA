@@ -24,11 +24,14 @@ public class TestScenario extends BaseTest {
 
         log.info("Go to cheepest game");
         objSpecPage.goToLargestDiscount();
+
+        FirstAgeCheckPage objAgeCheck= new FirstAgeCheckPage();
+        objAgeCheck.inputValidData(conf.getProperty("day"),conf.getProperty("month"),conf.getProperty("year"));
+
+        //Browser.getPage("https://store.steampowered.com/bundle/8133/Borderlands_The_Handsome_Collection/");
+
         GamePage objGamePage = new GamePage();
         objGamePage.isCorrectPrice(objSpecPage.getNeededGame());
-
-        AgeCheckPage objAgeCheck= new AgeCheckPage();
-        objAgeCheck.inputValidData();
 
         //https://store.steampowered.com/agecheck/bundle/8133
     }

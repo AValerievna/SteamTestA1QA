@@ -21,15 +21,12 @@ public class DiscountGame {
         return game;
     }
 
-/*    public Span getDiscountSpan() {
-        return discountSpan;
-    }*/
-    public Div getPrice() {
-        return price;
+    public double getPrice() {
+        return Utils.parseDoubleNumberFromElementText(price);
     }
 
-    public int getDiscount() {
-        return Utils.parseIntegerNumberFromElementText(discountSpan);
+    public double getDiscount() {
+        return Utils.parseDoubleNumberFromElementText(discountSpan);
     }
 
     public DiscountGame(WebElement el) {

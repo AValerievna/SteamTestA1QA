@@ -22,7 +22,7 @@ public class Configuration {
         return prop.getProperty(propName).charAt(0);
     }
 
-    int getIntProperty(String propName) {
+    public int getIntProperty(String propName) {
         return Integer.parseInt(prop.getProperty(propName));
     }
 }

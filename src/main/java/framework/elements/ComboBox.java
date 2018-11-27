@@ -10,7 +10,8 @@ import java.util.List;
 
 public class ComboBox extends BaseElement {
     List<BaseElement> options;
-    private By optLoc=By.xpath(".");
+    private By optLoc=By.xpath("./option");
+    private By optLoc2=By.xpath(".");
 
     public ComboBox(By locator) {
         super(locator);
@@ -21,18 +22,20 @@ public class ComboBox extends BaseElement {
     }
     public void getOptions(){
         options=new ArrayList<>();
-        List<WebElement> tagOptions =new BaseElements(optLoc).getElements();
-        for(WebElement el: tagOptions)
-            options.add(new Option(el,optLoc));
+        List<WebElement> tagOptions =new BaseElements(this.getElement(),optLoc).getElements();
+        for(WebElement el: tagOptions) {
+            options.add(new Option(el, optLoc2));
+        }
     }
 
     public void clickOption(String cnt) {
         this.clickElement();
-       /* getOptions();
+        getOptions();
         for(BaseElement el : options) {
-            if(el.getElementText().equals(cnt)) {
+            if(cnt.equals(el.getElementText())) {
                 el.clickElement();
+                break;
             }
-        }*/
+        }
     }
 }
