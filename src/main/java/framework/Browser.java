@@ -1,13 +1,8 @@
 package framework;
 
 
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
 import framework.enums.BrowserTypes;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,6 +11,12 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import static framework.BaseTest.conf;
 
@@ -93,7 +94,7 @@ public class Browser {
             throw new IllegalStateException();
         }
         return new FluentWait<>(t)
-                .ignoring(NoSuchElementException.class)
+                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class)
                 .pollingEvery(Duration.ofMillis(conf.getIntProperty("duration")))
                 .withTimeout(Duration.ofSeconds(conf.getIntProperty("duration.per")));
     }

@@ -1,10 +1,15 @@
 package steam.forms;
 
-import framework.*;
+import framework.BaseElements;
+import framework.BasePage;
+import framework.Browser;
+import framework.Label;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import static framework.BaseTest.conf;
 
@@ -24,8 +29,8 @@ public class SpecialsPage extends BasePage {
     }
     public void goToLargestDiscount() {
         getDiscountGames();
-        Browser.getFluentWait();
-        getGame().clickElement();
+        Browser.getFluentWait().until();
+        getGame().getElement().click();
     }
 
     private Label getGame() {
