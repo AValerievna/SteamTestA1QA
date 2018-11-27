@@ -3,10 +3,6 @@ package framework;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-
-import java.lang.reflect.Array;
-import java.util.*;
 
 
 public class BaseElement {
@@ -28,7 +24,6 @@ public class BaseElement {
 
 
     public boolean elementExists() {
-        Browser.waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
         if (baseElement == null) {
             return (Browser.getWebDriverInstance().findElements(this.locator).size() != 0);
         }  else {

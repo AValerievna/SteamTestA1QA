@@ -1,8 +1,8 @@
 package steam.forms;
 
 import framework.BasePage;
-import framework.elements.Div;
 import framework.Utils;
+import framework.elements.Div;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -24,9 +24,9 @@ public class GamePage extends BasePage {
     public void isCorrectPrice(DiscountGame dg) {
         price= new Div(prLoc);
         discount= new Div(discLoc);
-        Assert.assertEquals(dg.getPrice(),
+        Assert.assertEquals(dg.getPriceDouble(),
                 Utils.parseDoubleNumberFromElementText(price), "Wrong price");
-        Assert.assertEquals(dg.getDiscount(),
+        Assert.assertEquals(dg.getDiscDouble(),
                 Utils.parseDoubleNumberFromElementText(discount),"Wrong discount");
     }
 }

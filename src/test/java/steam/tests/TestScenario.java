@@ -3,7 +3,10 @@ package steam.tests;
 import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
-import steam.forms.*;
+import steam.forms.ActionSteamPage;
+import steam.forms.GamePage;
+import steam.forms.HomeSteamPage;
+import steam.forms.SpecialsPage;
 
 
 public class TestScenario extends BaseTest {
@@ -25,8 +28,7 @@ public class TestScenario extends BaseTest {
         log.info("Go to cheepest game");
         objSpecPage.goToLargestDiscount();
 
-        FirstAgeCheckPage objAgeCheck= new FirstAgeCheckPage();
-        objAgeCheck.inputValidData(conf.getProperty("day"),conf.getProperty("month"),conf.getProperty("year"));
+        objSpecPage.agePageExistance();
 
         //Browser.getPage("https://store.steampowered.com/bundle/8133/Borderlands_The_Handsome_Collection/");
 
