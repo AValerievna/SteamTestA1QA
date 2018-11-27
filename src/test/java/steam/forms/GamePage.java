@@ -1,7 +1,7 @@
 package steam.forms;
 
 import framework.BasePage;
-import framework.Div;
+import framework.elements.Div;
 import framework.Utils;
 import org.openqa.selenium.By;
 import org.testng.Assert;

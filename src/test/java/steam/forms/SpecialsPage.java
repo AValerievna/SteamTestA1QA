@@ -2,7 +2,6 @@ package steam.forms;
 
 import framework.BaseElements;
 import framework.BasePage;
-import framework.Label;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

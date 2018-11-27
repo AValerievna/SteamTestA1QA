@@ -1,4 +1,4 @@
-package framework.enums;
+package steam.enums;
 
 public enum Sections {
 }

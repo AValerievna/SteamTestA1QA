@@ -1,8 +1,8 @@
 package steam.forms;
 
-import framework.Div;
-import framework.Label;
-import framework.Span;
+import framework.elements.Div;
+import framework.elements.Label;
+import framework.elements.Span;
 import framework.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

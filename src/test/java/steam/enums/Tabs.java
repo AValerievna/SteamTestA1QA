@@ -1,4 +1,4 @@
-package framework.enums;
+package steam.enums;
 
 public enum Tabs {
     GENRE("genre"),FORYOU("foryou"),SOFTWARE("software"),HARDWARE("hardware"),VIDEOS("videos");

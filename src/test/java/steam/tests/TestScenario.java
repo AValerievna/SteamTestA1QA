@@ -28,8 +28,9 @@ public class TestScenario extends BaseTest {
         objGamePage.isCorrectPrice(objSpecPage.getNeededGame());
 
         AgeCheckPage objAgeCheck= new AgeCheckPage();
+        objAgeCheck.inputValidData();
 
-        https://store.steampowered.com/agecheck/bundle/8133
+        //https://store.steampowered.com/agecheck/bundle/8133
     }
 
 }

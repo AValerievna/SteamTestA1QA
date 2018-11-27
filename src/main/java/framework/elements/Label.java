@@ -1,9 +1,10 @@
-package framework;
+package framework.elements;
 
+import framework.BaseElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Label extends BaseElement{
+public class Label extends BaseElement {
 
     public Label(By locator) {
         super(locator);

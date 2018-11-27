@@ -1,7 +1,7 @@
 package steam.forms;
 
 import framework.BasePage;
-import framework.enums.Tabs;
+import steam.enums.Tabs;
 
 import static framework.BaseTest.conf;
 

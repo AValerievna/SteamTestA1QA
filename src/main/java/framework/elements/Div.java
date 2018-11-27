@@ -1,5 +1,6 @@
-package framework;
+package framework.elements;
 
+import framework.BaseElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
