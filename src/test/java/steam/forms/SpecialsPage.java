@@ -22,12 +22,16 @@ public class SpecialsPage extends BasePage {
             games.add(new DiscountGame(elem));
         }
     }
-    public void goToCheepest() {
-        games.stream().sorted(Comparator.comparing(DiscountGame::getDiscount).reversed())
-                .findFirst()
+    public void goToLargestDiscount() {
+        getDiscountGames();
+        Browser.getFluentWait();
+        getGame().clickElement();
+    }
+
+    private Label getGame() {
+        return games.stream().max(Comparator.comparing(DiscountGame::getDiscount))
                 .orElse(null)
-                .getGame()
-                .clickElement();
+                .getGame();
     }
 
 }

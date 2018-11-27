@@ -24,7 +24,7 @@ public class TestScenario extends BaseTest {
         SpecialsPage objSpecPage = new SpecialsPage();
 
         log.info("Go to cheepest game");
-        objSpecPage.goToCheepest();
+        objSpecPage.goToLargestDiscount();
 
 
     }

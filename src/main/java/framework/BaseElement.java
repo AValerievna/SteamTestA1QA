@@ -47,19 +47,14 @@ public class BaseElement {
     }
 
     public void clickElement() {
-        Browser.waitElement(ExpectedConditions.elementToBeClickable(this.locator));
-        if (baseElement == null) {
-            Browser.getWebDriverInstance().findElement(this.locator).click();
-        } else {
-            baseElement.findElement(locator);
-        }
+        getElement().click();
     }
 
     public String getElementText() {
         return getElement().getText();
     }
 
-    protected String getElementAttr(String attrName) {
+    public String getElementAttr(String attrName) {
         return getElement().getAttribute(attrName);
     }
 }
