@@ -3,8 +3,7 @@ package steam.tests;
 import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
-import steam.forms.HomeSteamPage;
-import steam.forms.SpecialsPage;
+import steam.forms.*;
 
 
 public class TestScenario extends BaseTest {
@@ -25,8 +24,12 @@ public class TestScenario extends BaseTest {
 
         log.info("Go to cheepest game");
         objSpecPage.goToLargestDiscount();
+        GamePage objGamePage = new GamePage();
+        objGamePage.isCorrectPrice(objSpecPage.getNeededGame());
 
+        AgeCheckPage objAgeCheck= new AgeCheckPage();
 
+        https://store.steampowered.com/agecheck/bundle/8133
     }
 
 }

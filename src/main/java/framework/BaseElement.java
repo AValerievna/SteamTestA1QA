@@ -41,7 +41,7 @@ public class BaseElement {
             Browser.waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
             return (Browser.getWebDriverInstance().findElement(this.locator));
         }
-        return Browser.getFluentWait()
+        return Browser.getFluentWait(baseElement)
                 .until(webElement -> webElement.findElement(locator));
 
     }

@@ -8,6 +8,9 @@ public class Utils {
         return By.xpath(String.format(pattern, elemIdent));
     }
 
+    public static int parseIntegerNumberFromElementText(BaseElement be) {
+        return Integer.parseInt(be.getElementText().replaceAll("\\D+",""));
+    }
 
     //DOWNLOADING
     //FIREFOX CONFIG

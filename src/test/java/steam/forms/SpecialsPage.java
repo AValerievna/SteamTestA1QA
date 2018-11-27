@@ -2,7 +2,6 @@ package steam.forms;
 
 import framework.BaseElements;
 import framework.BasePage;
-import framework.Browser;
 import framework.Label;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,6 +14,7 @@ import static framework.BaseTest.conf;
 
 public class SpecialsPage extends BasePage {
     List<DiscountGame> games = new ArrayList<>();
+    DiscountGame neededGame;
     By discGameLocator = By.xpath("//a[contains(@class, 'search_result_row')]");
 
     public SpecialsPage() {
@@ -29,14 +29,16 @@ public class SpecialsPage extends BasePage {
     }
     public void goToLargestDiscount() {
         getDiscountGames();
-        Browser.getFluentWait().until();
-        getGame().getElement().click();
+        neededGame= getGame();
+        neededGame.getGameLabel().clickElement();
     }
 
-    private Label getGame() {
+    public DiscountGame getNeededGame() {
+        return neededGame;
+    }
+    DiscountGame getGame() {
         return games.stream().max(Comparator.comparing(DiscountGame::getDiscount))
-                .orElse(null)
-                .getGame();
+                .orElse(null);
     }
 
 }
