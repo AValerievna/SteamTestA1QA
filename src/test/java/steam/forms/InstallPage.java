@@ -34,7 +34,6 @@ public class InstallPage extends BaseSteamPage {
             prev = downloaded.length();
             Thread.sleep(pollTime);
             next = downloaded.length();
-            System.out.printf("%d %d\n", prev, next);
         } while (((prev != next) || prev <= 0) && (System.currentTimeMillis() - startTime) < maxWait);
     }
 }
