@@ -35,7 +35,7 @@ public class Browser {
                     FirefoxOptions opts = new FirefoxOptions();
                     opts.addPreference("browser.download.folderList", 2);
                     opts.addPreference("browser.download.manager.showWhenStarting", false);
-                    opts.addPreference("browser.download.dir", conf.getProperty("download.dir"));
+                    opts.addPreference("browser.download.dir", conf.getProperty("downloads.dir.path"));
                     opts.addPreference("browser.helperApps.neverAsk.saveToDisk", conf.getProperty("firefox.never.ask.type"));
                     browser = new FirefoxDriver(opts);
                     break;
@@ -43,12 +43,12 @@ public class Browser {
                     System.setProperty("webdriver.chrome.driver", conf.getProperty("chrome.driver.path"));
                     ChromeOptions chromeOpts = new ChromeOptions();
                     Map<String, Object> chromePrefs = new HashMap<>();
-                    chromePrefs.put("download.default_directory", conf.getProperty("download.dir"));
+                    chromePrefs.put("download.default_directory", conf.getProperty("downloads.dir.path"));
                     chromePrefs.put("download.prompt_for_download", false);
                     chromePrefs.put("download.directory_upgrade", true);
                     chromePrefs.put("safebrowsing.enabled", true);
                     chromeOpts.setExperimentalOption(  "prefs", chromePrefs);
-                    browser = new ChromeDriver();
+                    browser = new ChromeDriver(chromeOpts);
                     break;
                 default:
                     break;
