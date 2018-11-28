@@ -14,4 +14,16 @@ public class SteamUtils {
         SecondAgeCheckPage objSecAgePage = new SecondAgeCheckPage();
         objSecAgePage.submitAge();
     }
+
+    public static void agePageExistance() {
+        FirstAgeCheckPage objAgeCheck = new FirstAgeCheckPage();
+        SecondAgeCheckPage objSecAgePage = new SecondAgeCheckPage();
+        if (objAgeCheck.isPageOpened(objAgeCheck.FIRST_PAGE_IDENT)) {
+            SteamUtils.doFirstAgePageCheck();
+            return;
+        }
+        if (objSecAgePage.isPageOpened(objSecAgePage.SECOND_PAGE_IDENT)) {
+            SteamUtils.doSecondAgePageCheck();
+        }
+    }
 }

@@ -1,9 +1,11 @@
 package framework;
 
 
+import org.apache.commons.io.FileUtils;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 /**
@@ -18,6 +20,7 @@ public class BaseTest {
         log = Logger.getGlobal();
         conf = new Configuration();
         Browser.getWebDriverInstance();
+        FileUtils.cleanDirectory(new File(conf.getProperty("downloads.dir.path")));
     }
 
     @AfterTest

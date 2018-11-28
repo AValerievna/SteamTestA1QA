@@ -33,11 +33,13 @@ public class DiscountGame {
         return game;
     }
 
-    public void setPrice() {
-        priceDouble = Utils.parseDoubleNumberFromElementText(price);
+    public void setPriceDouble() {
+        Utils.parseDoubleNumberFromBrText(price);
+        //System.out.println();
+        //priceDouble = Utils.parseDoubleNumberFromElementText(price);
     }
 
-    public void setDiscount() {
+    public void setDiscountDouble() {
         discDouble = Utils.parseDoubleNumberFromElementText(discountSpan);
     }
 

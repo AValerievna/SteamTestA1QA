@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BasePage {
     protected BaseElement ident;
-    protected final static String identPattern="//div[@class='%s']";
+    protected final static String IDENT_PATTERN = "//div[@class='%s']";
 
     public BasePage(String pageIdent) {
         ident = getIdent(pageIdent);
@@ -14,10 +14,10 @@ public class BasePage {
     }
 
     private BaseElement getIdent(String pageIdent) {
-        return new BaseElement(Utils.getLocatorWithPattern(identPattern, pageIdent));
+        return new BaseElement(Utils.getLocatorWithPattern(IDENT_PATTERN, pageIdent));
     }
 
-    protected boolean isPageOpened(String pageIdent) {
+    public boolean isPageOpened(String pageIdent) {
         return getIdent(pageIdent).elementExists();
     }
 }

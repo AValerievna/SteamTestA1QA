@@ -4,7 +4,6 @@ import framework.BaseElements;
 import framework.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import steam.utils.SteamUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,13 +14,11 @@ public class SpecialsPage extends BasePage {
     DiscountGame neededGame;
     By discGameLocator = By.xpath("//a[contains(@class, 'search_result_row')]");
     //div[contains(@class,'search_discount')]/span/ancestor::a[contains(@class, 'search_result_row')]
-    private final static String respPageIdent="responsive_page_content_overlay";
-    private final static String firstPageIdent = "//select";
-    private final static String secondPageIdent = "//div[@class='agegate_text_container btns']//span[contains(text(),'Открыть страницу')]";
+    private final static String RESP_PAGE_IDENT = "responsive_page_content_overlay";
 
 
     public SpecialsPage() {
-        super(respPageIdent);
+        super(RESP_PAGE_IDENT);
     }
 
     public void getDiscountGames() {
@@ -33,6 +30,8 @@ public class SpecialsPage extends BasePage {
     public void goToLargestDiscount() {
         getDiscountGames();
         neededGame= getGame();
+        neededGame.setDiscountDouble();
+        neededGame.setPriceDouble();
         neededGame.getGameLabel().clickElement();
     }
 
@@ -42,15 +41,5 @@ public class SpecialsPage extends BasePage {
     DiscountGame getGame() {
         return games.stream().max(Comparator.comparing(DiscountGame::getDiscDouble))
                 .orElse(null);
-    }
-
-    public void agePageExistance() {
-        if (this.isPageOpened(firstPageIdent)) {
-            SteamUtils.doFirstAgePageCheck();
-            return;
-        }
-        if (this.isPageOpened(secondPageIdent)) {
-            SteamUtils.doSecondAgePageCheck();
-        }
     }
 }

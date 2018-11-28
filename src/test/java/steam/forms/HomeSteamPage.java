@@ -8,8 +8,8 @@ import static framework.BaseTest.conf;
 
 public class HomeSteamPage extends BasePage {
     private SteamMenu stMenu = new SteamMenu();
-    private final static String homePageIdent="home_page_content";
-    private final static String langLoc ="//span[@id='language_pulldown']";
+    private final static String HOME_PAGE_IDENT = "home_page_content";
+    private final static String LANG_LOC = "//span[@id='language_pulldown']";
     private Label lblLang;
     //private static final By = baseSteamPageIdent
 
@@ -19,7 +19,7 @@ public class HomeSteamPage extends BasePage {
     }
 
     public HomeSteamPage() {
-        super(homePageIdent);
+        super(HOME_PAGE_IDENT);
     }
 
     public void goToActionSteamPage() {
