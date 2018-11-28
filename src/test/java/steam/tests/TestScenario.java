@@ -3,10 +3,7 @@ package steam.tests;
 import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
-import steam.forms.ActionSteamPage;
-import steam.forms.GamePage;
-import steam.forms.HomeSteamPage;
-import steam.forms.SpecialsPage;
+import steam.forms.*;
 
 
 public class TestScenario extends BaseTest {
@@ -26,15 +23,21 @@ public class TestScenario extends BaseTest {
         SpecialsPage objSpecPage = new SpecialsPage();
 
         log.info("Go to cheepest game");
-        objSpecPage.goToLargestDiscount();
-
+        objSpecPage.getLargestDiscountGame();
+        Double disc = objSpecPage.getNeededGame().getDiscDouble();
+        Double pr = objSpecPage.getNeededGame().getPriceDouble();
+        objSpecPage.goToNeededGame();
         //SteamUtils.agePageExistance();
 
+        log.info("Check price");
         GamePage objGamePage = new GamePage();
-        objGamePage.isCorrectPrice(objSpecPage.getNeededGame());
+        objGamePage.isCorrectPrice(disc, pr);
 
-        // objGamePage.installSteam();
+        log.info("Install file");
+        objGamePage.goToInstallPage();
 
+        InstallPage objInstPage = new InstallPage();
+        objInstPage.installSteam();
 
         //https://store.steampowered.com/agecheck/bundle/8133
     }

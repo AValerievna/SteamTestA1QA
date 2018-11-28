@@ -17,30 +17,25 @@ public class DiscountGame {
     By discLoc=By.xpath(".//div[contains(@class,'search_discount')]/span");
     By priceLoc = By.xpath(".//div//div[contains(@class,'search_price discounted')]");
 
-    private double discDouble;
-    private double priceDouble;
-
-    public double getDiscDouble() {
+    /*public double getDiscDouble() {
         return discDouble;
     }
 
     public double getPriceDouble() {
         return priceDouble;
-    }
+    }*/
 
 
     public Label getGameLabel() {
         return game;
     }
 
-    public void setPriceDouble() {
-        Utils.parseDoubleNumberFromBrText(price);
-        //System.out.println();
-        //priceDouble = Utils.parseDoubleNumberFromElementText(price);
+    public double getPriceDouble() {
+        return Utils.parseDoubleNumberFromBrText(price);
     }
 
-    public void setDiscountDouble() {
-        discDouble = Utils.parseDoubleNumberFromElementText(discountSpan);
+    public double getDiscDouble() {
+        return Utils.parseDoubleNumberFromElementText(discountSpan);
     }
 
     public DiscountGame(WebElement el) {

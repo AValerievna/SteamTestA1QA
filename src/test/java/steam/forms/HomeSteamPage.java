@@ -1,12 +1,11 @@
 package steam.forms;
 
-import framework.BasePage;
 import framework.elements.Label;
 import steam.enums.Tabs;
 
 import static framework.BaseTest.conf;
 
-public class HomeSteamPage extends BasePage {
+public class HomeSteamPage extends BaseSteamPage {
     private SteamMenu stMenu = new SteamMenu();
     private final static String HOME_PAGE_IDENT = "home_page_content";
     private final static String LANG_LOC = "//span[@id='language_pulldown']";

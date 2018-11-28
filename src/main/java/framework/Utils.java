@@ -10,7 +10,7 @@ public class Utils {
     private final static String REGEX="[^(\\d*\\.)?\\d+]";
     private final static String REGEX_BR = "br>((\\d*\\.)?\\d+)<";
     public static final String REGEX_COMMA = ",";
-    public static final String REGEX_DOT = ".";
+    public static final String REGEX_DOT = "\\.";
     public static final String REGEX_REMOVE = "";
     public static final String BR_PRICE_REGEX = ".*<br>\\s*(?<price>[^\\s]*).*";
 
@@ -19,21 +19,15 @@ public class Utils {
     }
 
     public static double parseDoubleNumberFromElementText(BaseElement be) {
-        return getaDouble(be.getElementText().replaceAll(REGEX, REGEX_REMOVE));
+        return Double.parseDouble(be.getElementText().replaceAll(REGEX_DOT, REGEX_REMOVE).replaceAll(REGEX_COMMA, REGEX_DOT).replaceAll(REGEX, REGEX_REMOVE));
     }
 
     public static double parseDoubleNumberFromBrText(BaseElement be) {
         Pattern pricePattern = Pattern.compile(BR_PRICE_REGEX, Pattern.DOTALL);
-        System.out.println(be.getElementAttr("innerHTML"));
         Matcher priceMatcher = pricePattern.matcher(be.getElementAttr("innerHTML"));
         priceMatcher.matches();
         String priceContent = priceMatcher.group("price").trim();
-        return getaDouble(priceContent);
-    }
-
-    private static double getaDouble(String priceContent) {
-        System.out.println(priceContent);
-        return Double.parseDouble(priceContent.replaceAll(REGEX_COMMA, REGEX_DOT));
+        return Double.parseDouble((priceContent).replaceAll(REGEX_COMMA, REGEX_DOT));
     }
 
 
