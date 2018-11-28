@@ -7,7 +7,8 @@ import steam.forms.*;
 
 
 public class TestScenario extends BaseTest {
-
+/**
+ * Using Thread sleep after landguage changing, unfortunately*/
     @Test
     public void testScenario() throws Exception {
         log.info("Go to steam");
@@ -16,9 +17,11 @@ public class TestScenario extends BaseTest {
 
         log.info("Checking locale");
         objHomeSteamPage.isEngLanguage(conf.getProperty("locale"));
+        Thread.sleep(conf.getIntProperty("language.change.sleep"));
 
         log.info("Go to Actions");
-        objHomeSteamPage.goToActionSteamPage();
+        HomeSteamPage hP = new HomeSteamPage();
+        hP.goToActionSteamPage();
         ActionSteamPage objActPage = new ActionSteamPage();
 
         log.info("Go to Specials");
