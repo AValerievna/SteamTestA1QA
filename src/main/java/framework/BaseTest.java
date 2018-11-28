@@ -22,8 +22,17 @@ public class BaseTest {
         conf = new Configuration();
         langConf = new LangConfiguration(conf.getProperty("locale"));
         Browser.getWebDriverInstance();
-        System.out.println(new File(conf.getProperty("downloads.dir.path") + conf.getProperty("SteamSetup.exe")).delete());
-//        FileUtils.cleanDirectory(new File(conf.getProperty("downloads.dir.path")));
+        File file = new File(conf.getProperty("downloads.dir.path") + conf.getProperty("steam.download.expected-name"));
+        if (file.exists()) {
+            boolean delete = file.delete();
+            for (int i = 0; i < 3 && !delete; ++i) {
+                delete = file.delete();
+            }
+            if (!delete) {
+                throw new RuntimeException();
+            }
+        }
+
     }
 
     @AfterTest

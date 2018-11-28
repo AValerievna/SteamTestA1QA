@@ -26,13 +26,16 @@ public class InstallPage extends BaseSteamPage {
         long pollTime = Long.parseLong(conf.getProperty("downloads.poll-time"));
         Thread.sleep(pollTime); //sleep before download
         File downloaded = new File(downloadDir + downloadExpectedName);
+        long startTime = System.currentTimeMillis();
         long prev;
         long next;
+        long maxWait = conf.getIntProperty("max-download-wait-ms");
         do {
             prev = downloaded.length();
             Thread.sleep(pollTime);
             next = downloaded.length();
-        } while (prev != next);
+            System.out.printf("%d %d\n", prev, next);
+        } while (((prev != next) || prev <= 0) && (System.currentTimeMillis() - startTime) < maxWait);
     }
 }
 
