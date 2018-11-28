@@ -22,7 +22,8 @@ public class BaseTest {
         conf = new Configuration();
         langConf = new LangConfiguration(conf.getProperty("locale"));
         Browser.getWebDriverInstance();
-        FileUtils.cleanDirectory(new File(conf.getProperty("downloads.dir.path")));
+        System.out.println(new File(conf.getProperty("downloads.dir.path") + conf.getProperty("SteamSetup.exe")).delete());
+//        FileUtils.cleanDirectory(new File(conf.getProperty("downloads.dir.path")));
     }
 
     @AfterTest
