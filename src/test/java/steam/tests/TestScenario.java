@@ -12,7 +12,7 @@ public class TestScenario extends BaseTest {
     public void testScenario() throws Exception {
         log.info("Go to steam");
         Browser.getPage(conf.getProperty("base.url"));
-       /* HomeSteamPage objHomeSteamPage = new HomeSteamPage();
+        HomeSteamPage objHomeSteamPage = new HomeSteamPage();
 
         log.info("Checking locale");
         objHomeSteamPage.isEngLanguage(conf.getProperty("locale"));
@@ -36,7 +36,7 @@ public class TestScenario extends BaseTest {
         objGamePage.isCorrectPrice(disc, pr);
 
         log.info("Install file");
-        objGamePage.goToInstallPage();*/
+        objGamePage.goToInstallPage();
 
         InstallPage objInstPage = new InstallPage();
         objInstPage.installSteam();
