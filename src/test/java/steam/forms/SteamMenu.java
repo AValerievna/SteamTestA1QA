@@ -11,8 +11,8 @@ public class SteamMenu {
     private final static String SECTION_PATTERN = "//div[@id='genre_flyout']//a[@class='popup_menu_item'][contains(text(),'%s')]";
 
     public void navigateMenu(String tab, String section) {
-        Actions builder = new Actions(Browser.getWebDriverInstance());
         BaseElement tabEl = new BaseElement(Utils.getLocatorWithPattern(TAB_PATTERN, tab));
+        Actions builder = new Actions(Browser.getWebDriverInstance());
         builder.moveToElement(tabEl.getElement())
                 .moveToElement(new BaseElement(Utils.getLocatorWithPattern(SECTION_PATTERN, section))
                         .getElement())

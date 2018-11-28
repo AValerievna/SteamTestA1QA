@@ -12,21 +12,13 @@ public class DiscountGame {
     private Span name;
     private Span discountSpan;
     private Div price;
-    By nameLoc=By.xpath(".//div/span[@class='title']");
-    By labelLoc=By.xpath(".//.");
-    By discLoc=By.xpath(".//div[contains(@class,'search_discount')]/span");
-    By priceLoc = By.xpath(".//div//div[contains(@class,'search_price discounted')]");
-
-    /*public double getDiscDouble() {
-        return discDouble;
-    }
-
-    public double getPriceDouble() {
-        return priceDouble;
-    }*/
+    private By nameLoc = By.xpath(".//div/span[@class='title']");
+    private By labelLoc = By.xpath(".//.");
+    private By discLoc = By.xpath(".//div[contains(@class,'search_discount')]/span");
+    private By priceLoc = By.xpath(".//div//div[contains(@class,'search_price discounted')]");
 
 
-    public Label getGameLabel() {
+    Label getGameLabel() {
         return game;
     }
 
@@ -38,7 +30,7 @@ public class DiscountGame {
         return Utils.parseDoubleNumberFromElementText(discountSpan);
     }
 
-    public DiscountGame(WebElement el) {
+    DiscountGame(WebElement el) {
         this.game= new Label(el, labelLoc);
         this.name=new Span(el, nameLoc);
         this.discountSpan=new Span(el, discLoc);

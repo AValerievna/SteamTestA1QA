@@ -1,25 +1,27 @@
 package steam.forms;
 
-import framework.BasePage;
+import framework.Utils;
 import framework.elements.Label;
-import org.openqa.selenium.By;
 
-public class SecondAgeCheckPage extends BasePage {
+import static framework.BaseTest.langConf;
+
+public class SecondAgeCheckPage extends BaseSteamPage {
 
     private Label lblSubmit;
     private final static String respPageIdent="responsive_page_content_overlay";
-    public final static String SECOND_PAGE_IDENT = "agegate_text_container btns']//span[contains(text(),'Открыть страницу";
+    private final static String SUB_PATTERN = "'agegate_text_container btns']//span[contains(text(),'%s";
+    private final static String SUB_LOC_PATTERN = "//div[@class='agegate_text_container btns']//span[contains(text(),'%s')]";
 
-    //span[contains(text(),'Открыть страницу')]
     public SecondAgeCheckPage() {
         super(respPageIdent);
     }
 
-    //div[@class='agegate_text_container btns']//span[contains(text(),'Открыть страницу')]
-    private By submLoc = By.xpath("//div[@class='agegate_text_container btns']//span[contains(text(),'Открыть страницу')]");
+    public String retSecPageIdent() {
+        return String.format(SUB_PATTERN, langConf.getLangProperty("open"));
+    }
 
     public void submitAge() {
-        lblSubmit = new Label(submLoc);
+        lblSubmit = new Label(Utils.getLocatorWithPattern(SUB_LOC_PATTERN, langConf.getLangProperty("open")));
         lblSubmit.clickElement();
     }
 

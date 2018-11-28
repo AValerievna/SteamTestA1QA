@@ -13,12 +13,14 @@ import java.util.logging.Logger;
  */
 public class BaseTest {
     public static Configuration conf;
+    public static LangConfiguration langConf;
     protected static Logger log;
 
     @BeforeTest
     public void setupTest() throws Exception {
         log = Logger.getGlobal();
         conf = new Configuration();
+        langConf = new LangConfiguration(conf.getProperty("locale"));
         Browser.getWebDriverInstance();
         FileUtils.cleanDirectory(new File(conf.getProperty("downloads.dir.path")));
     }

@@ -1,18 +1,18 @@
 package steam.forms;
 
-import framework.BasePage;
+import framework.Utils;
 import framework.elements.ComboBox;
 import framework.elements.Label;
-import org.openqa.selenium.By;
 
+import static framework.BaseTest.langConf;
 import static framework.Utils.getLocatorWithPattern;
 
-public class FirstAgeCheckPage extends BasePage {
+public class FirstAgeCheckPage extends BaseSteamPage {
     private ComboBox cmbDay;
     private ComboBox cmbMonth;
     private ComboBox cmbYear;
     private Label lblSubmit;
-    private By submLoc = By.xpath("//div[@class='agegate_text_container btns']//span[contains(text(),'Открыть страницу')]");
+    private final static String SUB_PATTERN = "//div[@class='agegate_text_container btns']//span[contains(text(),'%s')]";
     private final static String SEL_PATTERN = "//select[@id='%s']";
     private final static String RESP_PAGE_IDENT = "responsive_page_content_overlay";
     private final static String DAY_FRAG = "ageDay";
@@ -29,7 +29,7 @@ public class FirstAgeCheckPage extends BasePage {
         cmbDay = new ComboBox(getLocatorWithPattern(SEL_PATTERN, DAY_FRAG));
         cmbMonth = new ComboBox(getLocatorWithPattern(SEL_PATTERN, MONTH_FRAG));
         cmbYear = new ComboBox(getLocatorWithPattern(SEL_PATTERN, YEAR_FRAG));
-        lblSubmit = new Label(submLoc);
+        lblSubmit = new Label(Utils.getLocatorWithPattern(SUB_PATTERN, langConf.getLangProperty("open")));
 
         cmbDay.clickOption(day);
         cmbMonth.clickOption(month);

@@ -33,12 +33,16 @@ public class BaseElement {
 
     public WebElement getElement() {
         if (baseElement == null) {
-            Browser.waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
+            waiting();
             return (Browser.getWebDriverInstance().findElement(this.locator));
         }
         return Browser.getFluentWait(baseElement)
                 .until(webElement -> webElement.findElement(locator));
 
+    }
+
+    public void waiting() {
+        Browser.waitElement(ExpectedConditions.presenceOfElementLocated(this.locator));
     }
 
     public void clickElement() {

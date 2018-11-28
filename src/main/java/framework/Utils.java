@@ -29,19 +29,4 @@ public class Utils {
         String priceContent = priceMatcher.group("price").trim();
         return Double.parseDouble((priceContent).replaceAll(REGEX_COMMA, REGEX_DOT));
     }
-
-
-//WAIT FOR LOAD AFTER BUTTON CLICK
-/*String downloadDir = conf.getProperty("downloads.dir.path");
-    String downloadExpectedName = conf.getProperty("steam.download.expected-name");
-    long pollTime = Long.parseLong(conf.getProperty("downloads.poll-time"));
-Thread.sleep(pollTime); //sleep before download
-    File downloaded = new File(downloadDir + downloadExpectedName);
-    long prev = 0;
-    long next = 0;
-do {
-        prev = downloaded.length();
-        Thread.sleep(pollTime);
-        next = downloaded.length();
-    } while (prev != next);*/
 }

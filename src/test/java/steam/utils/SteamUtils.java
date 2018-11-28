@@ -22,7 +22,7 @@ public class SteamUtils {
             SteamUtils.doFirstAgePageCheck();
             return;
         }
-        if (objSecAgePage.isPageOpened(objSecAgePage.SECOND_PAGE_IDENT)) {
+        if (objSecAgePage.isPageOpened(objSecAgePage.retSecPageIdent())) {
             SteamUtils.doSecondAgePageCheck();
         }
     }

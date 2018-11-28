@@ -1,15 +1,19 @@
 package framework;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LangConfiguration {
-    public LangConfiguration() {
-        ResourceBundle english = ResourceBundle.getBundle("localization", Locale.ENGLISH);
-        ResourceBundle russian = ResourceBundle.getBundle("localization", Locale.forLanguageTag("ru"));
+    private ResourceBundle bnd;
+    private Locale loc;
+
+    LangConfiguration(String locTag) throws IOException {
+        loc = Locale.forLanguageTag(locTag);
+        bnd = ResourceBundle.getBundle("localization", loc);
     }
 
-    public String getProperty(String propName, Locale locale) {
-        return  ResourceBundle.getBundle("localization", locale).getString(propName);
+    public String getLangProperty(String propName) {
+        return ResourceBundle.getBundle("localization", loc).getString(propName);
     }
 }
