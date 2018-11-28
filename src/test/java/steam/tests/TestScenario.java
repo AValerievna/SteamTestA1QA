@@ -4,7 +4,6 @@ import framework.BaseTest;
 import framework.Browser;
 import org.testng.annotations.Test;
 import steam.forms.*;
-import steam.utils.SteamUtils;
 
 
 public class TestScenario extends BaseTest {
@@ -17,7 +16,6 @@ public class TestScenario extends BaseTest {
 
         log.info("Checking locale");
         objHomeSteamPage.isEngLanguage(conf.getProperty("locale"));
-        //Thread.sleep(12000);
 
         log.info("Go to Actions");
         objHomeSteamPage.goToActionSteamPage();
@@ -32,9 +30,6 @@ public class TestScenario extends BaseTest {
         Double disc = objSpecPage.getNeededGame().getDiscDouble();
         Double pr = objSpecPage.getNeededGame().getPriceDouble();
         objSpecPage.goToNeededGame();
-
-
-        SteamUtils.agePageExistance();
 
         log.info("Check price");
         GamePage objGamePage = new GamePage();

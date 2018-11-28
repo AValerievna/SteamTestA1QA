@@ -18,7 +18,7 @@ public class BaseSteamPage extends BasePage {
         super(pageIdent);
     }
 
-    public void goToInstallPage() throws InterruptedException {
+    public void goToInstallPage() {
         lblInstall = new Label(lblLoc);
         lblInstall.clickElement();
     }
