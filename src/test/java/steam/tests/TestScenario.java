@@ -40,8 +40,6 @@ public class TestScenario extends BaseTest {
 
         InstallPage objInstPage = new InstallPage();
         objInstPage.installSteam();
-
-        //https://store.steampowered.com/agecheck/bundle/8133
     }
 
 }

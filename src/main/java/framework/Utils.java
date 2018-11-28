@@ -7,12 +7,11 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    private final static String REGEX="[^(\\d*\\.)?\\d+]";
-    private final static String REGEX_BR = "br>((\\d*\\.)?\\d+)<";
-    public static final String REGEX_COMMA = ",";
-    public static final String REGEX_DOT = "\\.";
-    public static final String REGEX_REMOVE = "";
-    public static final String BR_PRICE_REGEX = ".*<br>\\s*(?<price>[^\\s]*).*";
+    private final static String REGEX = "[^(\\d*.)?\\d+]";
+    private static final String REGEX_COMMA = ",";
+    private static final String REGEX_DOT = "\\.";
+    private static final String REGEX_REMOVE = "";
+    private static final String BR_PRICE_REGEX = ".*<br>\\s*(?<price>[^\\s]*).*";
 
     public static By getLocatorWithPattern(String pattern, String elemIdent) {
         return By.xpath(String.format(pattern, elemIdent));

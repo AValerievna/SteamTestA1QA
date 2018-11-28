@@ -9,10 +9,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SpecialsPage extends BaseSteamPage {
-    List<DiscountGame> games = new ArrayList<>();
-    DiscountGame neededGame;
-    By discGameLocator = By.xpath("//div[contains(@class,'search_discount')]/span/ancestor::a[contains(@class, 'search_result_row')]");
-    //div[contains(@class,'search_discount')]/span/ancestor::a[contains(@class, 'search_result_row')]
+    private List<DiscountGame> games = new ArrayList<>();
+    private DiscountGame neededGame;
+    private By discGameLocator = By.xpath("//div[contains(@class,'search_discount')]/span/ancestor::a[contains(@class, 'search_result_row')]");
     private final static String RESP_PAGE_IDENT = "responsive_page_content_overlay";
 
 
@@ -20,7 +19,7 @@ public class SpecialsPage extends BaseSteamPage {
         super(RESP_PAGE_IDENT);
     }
 
-    public void getDiscountGames() {
+    private void getDiscountGames() {
         List<WebElement> webElems =new BaseElements(discGameLocator).getElements();
         for(WebElement elem : webElems) {
             games.add(new DiscountGame(elem));
@@ -40,7 +39,7 @@ public class SpecialsPage extends BaseSteamPage {
         return neededGame;
     }
 
-    DiscountGame getGame() {
+    private DiscountGame getGame() {
         return games.stream().max(Comparator.comparing(DiscountGame::getDiscDouble))
                 .orElse(null);
     }
