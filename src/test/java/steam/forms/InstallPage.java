@@ -26,10 +26,9 @@ public class InstallPage extends BaseSteamPage {
         long pollTime = Long.parseLong(conf.getProperty("downloads.poll-time"));
         Thread.sleep(pollTime); //sleep before download
         File downloaded = new File(downloadDir + downloadExpectedName);
-        long prev = 0;
-        long next = 0;
+        long prev;
+        long next;
         do {
-            System.out.println(downloaded.length());
             prev = downloaded.length();
             Thread.sleep(pollTime);
             next = downloaded.length();

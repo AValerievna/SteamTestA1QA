@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,6 +33,7 @@ public class Browser {
                             .getProperty("browser"))) {
                 case FIREFOX:
                     System.setProperty("webdriver.gecko.driver", conf.getProperty("gecko.driver.path"));
+                    FirefoxProfile profile = new FirefoxProfile();
                     FirefoxOptions opts = new FirefoxOptions();
                     opts.addPreference("browser.download.folderList", 2);
                     opts.addPreference("browser.download.manager.showWhenStarting", false);
@@ -61,7 +63,7 @@ public class Browser {
         return browser;
     }
 
-    public static WebDriverWait getWebDriverWaitInstance() {
+    private static WebDriverWait getWebDriverWaitInstance() {
         if (browserWait == null || null == browser) {
             throw new IllegalStateException();
         } else {
@@ -85,11 +87,11 @@ public class Browser {
         browser.navigate().refresh();
     }
 
-    protected static <V> void waitElement(java.util.function.Function<? super WebDriver, V> isTrue) {
+    static <V> void waitElement(java.util.function.Function<? super WebDriver, V> isTrue) {
         getWebDriverWaitInstance().until(isTrue);
     }
 
-    public static <T> Wait<T> getFluentWait(T t) {
+    static <T> Wait<T> getFluentWait(T t) {
         if (null == browser) {
             throw new IllegalStateException();
         }
