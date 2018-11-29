@@ -1,9 +1,9 @@
 package framework;
 
 
-import org.apache.commons.io.FileUtils;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -17,10 +17,12 @@ public class BaseTest {
     protected static Logger log;
 
     @BeforeTest
-    public void setupTest() throws Exception {
+    @Parameters("browser")
+    public void setupTest(String browser) throws Exception {
         log = Logger.getGlobal();
         conf = new Configuration();
         langConf = new LangConfiguration(conf.getProperty("locale"));
+        Browser.setBrType(browser);
         Browser.getWebDriverInstance();
         File file = new File(conf.getProperty("downloads.dir.path") + conf.getProperty("steam.download.expected-name"));
         if (file.exists()) {

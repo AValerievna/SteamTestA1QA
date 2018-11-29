@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="steam.tests">
-    <test verbose="1" name="steam.tests">
-        <packages>
-            <package name="steam.tests"/>
-        </packages>
-    </test>
-</suite>

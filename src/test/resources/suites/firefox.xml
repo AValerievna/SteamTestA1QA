@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="firefox-test">
+
+    <test name="full-test">
+        <parameter name="browser" value="FIREFOX" />
+        <classes>
+            <class name="steam.tests.TestScenario" />
+        </classes>
+    </test>
+
+</suite>

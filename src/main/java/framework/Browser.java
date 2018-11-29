@@ -25,12 +25,16 @@ import static framework.BaseTest.conf;
 public class Browser {
     private static WebDriverWait browserWait;
     private static WebDriver browser;
+    private static String brType;
+
+    static void setBrType(String brType) {
+        Browser.brType = brType;
+    }
 
     public static synchronized WebDriver getWebDriverInstance() {
         if (null == browser) {
             switch (BrowserTypes
-                    .valueOf(conf
-                            .getProperty("browser"))) {
+                    .valueOf(System.getProperty("browser", conf.getProperty("browser")))) {
                 case FIREFOX:
                     System.setProperty("webdriver.gecko.driver", conf.getProperty("gecko.driver.path"));
                     FirefoxProfile profile = new FirefoxProfile();

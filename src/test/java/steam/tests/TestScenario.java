@@ -2,7 +2,9 @@ package steam.tests;
 
 import framework.BaseTest;
 import framework.Browser;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import steam.forms.*;
 
 
@@ -11,6 +13,7 @@ public class TestScenario extends BaseTest {
  * Using Thread sleep after landguage changing, unfortunately*/
     @Test
     public void testScenario() throws Exception {
+        log.info(System.getProperty("browser"));
         log.info("Go to steam");
         Browser.getPage(conf.getProperty("base.url"));
         HomeSteamPage objHomeSteamPage = new HomeSteamPage();
@@ -21,6 +24,7 @@ public class TestScenario extends BaseTest {
 
         log.info("Go to Actions");
         HomeSteamPage hP = new HomeSteamPage();
+        //hP.stMenu.navigateMenu();
         hP.goToActionSteamPage();
         ActionSteamPage objActPage = new ActionSteamPage();
 
