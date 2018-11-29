@@ -25,11 +25,6 @@ import static framework.BaseTest.conf;
 public class Browser {
     private static WebDriverWait browserWait;
     private static WebDriver browser;
-    private static String brType;
-
-    static void setBrType(String brType) {
-        Browser.brType = brType;
-    }
 
     public static synchronized WebDriver getWebDriverInstance() {
         if (null == browser) {

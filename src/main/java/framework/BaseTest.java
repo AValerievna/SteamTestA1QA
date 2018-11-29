@@ -17,12 +17,10 @@ public class BaseTest {
     protected static Logger log;
 
     @BeforeTest
-    @Parameters("browser")
-    public void setupTest(String browser) throws Exception {
+    public void setupTest() throws Exception {
         log = Logger.getGlobal();
         conf = new Configuration();
         langConf = new LangConfiguration(conf.getProperty("locale"));
-        Browser.setBrType(browser);
         Browser.getWebDriverInstance();
         File file = new File(conf.getProperty("downloads.dir.path") + conf.getProperty("steam.download.expected-name"));
         if (file.exists()) {

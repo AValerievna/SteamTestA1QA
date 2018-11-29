@@ -21,7 +21,7 @@
                 </property>
             </activation>
             <properties>
-                <suites>testng</suites>
+                <suites>full-steam-test</suites>
             </properties>
         </profile>
     </profiles>
@@ -69,6 +69,11 @@
                         <suiteXmlFile>src/test/resources/suites/${suites}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M1</version>
             </plugin>
         </plugins>
     </build>
